@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mantasha Khan — Online Earning Coach</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1689964628832460');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1689964628832460&ev=PageView&noscript=1"/></noscript>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+:root{
+  --navy:#050d1a;
+  --navy2:#0a1628;
+  --navy3:#0f1f38;
+  --orange:#ff6b2b;
+  --orange2:#ff8c52;
+  --orange3:#ffaa7a;
+  --sky:#4ab3f4;
+  --white:#f0f6ff;
+  --muted:rgba(240,246,255,0.45);
+  --muted2:rgba(240,246,255,0.7);
+  --head:'Anton',sans-serif;
+  --body:'Mulish',sans-serif;
+}
+body{font-family:var(--body);background:var(--navy);color:var(--white);overflow-x:hidden;line-height:1.65;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--orange);}
+
+/* MODAL */
+.ov{display:none;position:fixed;inset:0;background:rgba(2,6,14,.94);z-index:9999;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(14px);}
+.ov.on{display:flex;}
+.pbox{background:var(--navy2);border:1px solid rgba(255,107,43,.18);padding:28px;max-width:460px;width:100%;position:relative;max-height:88vh;overflow-y:auto;}
+.pbox h3{color:var(--orange);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:12px 0 4px;}
+.pbox h3:first-of-type{margin-top:0;}
+.pbox p{color:var(--muted2);font-size:.8rem;line-height:1.7;}
+.mcls{position:absolute;top:10px;right:14px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;}
+.mcls:hover{color:var(--white);}
+
+.fbox{background:var(--navy2);border:1px solid rgba(255,107,43,.22);padding:32px 26px;max-width:430px;width:100%;position:relative;box-shadow:0 40px 80px rgba(0,0,0,.7);}
+.ftitle{font-family:var(--head);font-size:2.2rem;color:var(--white);text-align:center;margin-bottom:2px;letter-spacing:1px;}
+.fsub{font-size:.72rem;color:var(--muted);text-align:center;margin-bottom:18px;}
+.fg{margin-bottom:11px;}
+.fg label{display:block;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:5px;}
+.fg input,.fg select{width:100%;padding:10px 13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,107,43,.14);font-family:var(--body);font-size:.88rem;color:var(--white);outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.fg input::placeholder{color:rgba(240,246,255,.2);}
+.fg select option{background:var(--navy2);}
+.fg input:focus,.fg select:focus{border-color:var(--orange);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.fsend{width:100%;padding:13px;background:var(--orange);color:#fff;font-family:var(--head);font-size:1.2rem;border:none;margin-top:7px;cursor:pointer;transition:all .25s;letter-spacing:1px;}
+.fsend:hover{background:var(--orange2);transform:translateY(-2px);}
+.fsend:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.fstatus{text-align:center;font-size:.72rem;margin-top:8px;color:var(--orange);}
+
+/* HERO */
+#hero{
+  min-height:auto;display:flex;flex-direction:column;justify-content:flex-start;
+  padding:40px 7% 44px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+}
+/* animated grid lines */
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,107,43,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,43,.04) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;
+}
+/* glow top right */
+.hero-glow{position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,43,.1) 0%,transparent 65%);pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,43,.1);border:1px solid rgba(255,107,43,.25);padding:6px 16px;margin-bottom:10px;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange3);}
+.bdot{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:bd 1.8s infinite;}
+@keyframes bd{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* huge headline */
+.hero-h{font-family:var(--head);font-size:clamp(3.5rem,10vw,9rem);line-height:.9;letter-spacing:.5px;color:var(--white);margin-bottom:4px;position:relative;z-index:1;}
+.hero-h .or{color:var(--orange);}
+.hero-h .sk{
+  -webkit-text-stroke:2px rgba(255,107,43,.5);
+  -webkit-text-fill-color:transparent;
+}
+
+.hero-p{font-size:.95rem;color:var(--muted2);max-width:500px;line-height:1.75;margin:10px 0 16px;position:relative;z-index:1;}
+.hero-p strong{color:var(--white);}
+
+/* horizontal stats */
+.hero-stat-strip{display:flex;gap:1px;background:rgba(255,107,43,.1);margin-bottom:18px;position:relative;z-index:1;max-width:480px;}
+.hss{flex:1;background:var(--navy);padding:14px 16px;text-align:center;}
+.hss-n{font-family:var(--head);font-size:1.6rem;color:var(--orange);line-height:1;letter-spacing:.5px;}
+.hss-l{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:3px;}
+
+.h-btn{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:#fff;padding:16px 20px;border:none;font-family:var(--head);font-size:1.2rem;letter-spacing:1px;cursor:pointer;transition:all .25s;position:relative;z-index:1;width:100%;}
+.h-btn:hover{background:var(--orange2);transform:translate(-2px,-2px);box-shadow:4px 4px 0 rgba(255,107,43,.3);}
+
+/* JOURNEY */
+#journey{background:var(--navy2);border-top:1px solid rgba(255,107,43,.07);padding:52px 7%;}
+.jw{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:980px;}
+.ji{position:relative;}
+.ji img{width:100%;display:block;filter:contrast(1.05);}
+.ji-ph{width:100%;aspect-ratio:4/3;background:var(--navy3);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem;}
+/* orange frame corner */
+.ji::before{content:'';position:absolute;top:-6px;left:-6px;width:28px;height:28px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+.ji::after{content:'';position:absolute;bottom:-6px;right:-6px;width:28px;height:28px;border-bottom:2px solid var(--orange);border-right:2px solid var(--orange);}
+.sec-tag{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.sec-tag::before{content:'';width:18px;height:2px;background:var(--orange);}
+.sh{font-family:var(--head);font-size:clamp(2rem,4vw,3.5rem);color:var(--white);line-height:.95;letter-spacing:.5px;margin-bottom:13px;}
+.sh span{color:var(--orange);}
+.sp{font-size:.9rem;color:var(--muted2);line-height:1.78;max-width:420px;}
+
+/* COACH */
+#coach{background:var(--orange);padding:52px 7%;position:relative;overflow:hidden;border-top:1px solid rgba(255,107,43,.07);}
+#coach::after{content:'MK';position:absolute;right:-20px;bottom:-20px;font-family:var(--head);font-size:18vw;color:rgba(0,0,0,.06);line-height:1;pointer-events:none;}
+.cw{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;max-width:980px;}
+.cn{font-family:var(--head);font-size:clamp(2.8rem,6vw,5.5rem);color:#fff;line-height:.9;letter-spacing:.5px;margin-bottom:14px;}
+.cn em{display:block;font-style:normal;-webkit-text-stroke:2px rgba(255,255,255,.6);-webkit-text-fill-color:transparent;}
+.ctags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
+.ctg{padding:5px 13px;border:1.5px solid rgba(0,0,0,.2);font-size:.72rem;font-weight:700;color:rgba(0,0,0,.75);letter-spacing:.04em;}
+.cbio{font-size:.88rem;color:rgba(0,0,0,.7);line-height:1.78;max-width:440px;margin-bottom:18px;}
+.cbio strong{color:#000;}
+.qstrip{background:#000;padding:14px 18px;border-left:3px solid var(--orange3);}
+.qstrip p{font-family:var(--head);font-size:1rem;letter-spacing:.5px;color:var(--white);}
+.qstrip cite{font-size:.62rem;color:rgba(240,246,255,.5);font-style:normal;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-top:5px;display:block;}
+.cstats{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(0,0,0,.15);}
+.cs{background:rgba(0,0,0,.08);padding:20px 16px;text-align:center;}
+.csn{font-family:var(--head);font-size:2.2rem;color:#000;line-height:1;letter-spacing:-1px;}
+.csl{font-size:.6rem;color:rgba(0,0,0,.55);text-transform:uppercase;letter-spacing:.1em;margin-top:3px;font-weight:700;}
+
+/* TESTI */
+#testi{padding:52px 0;background:var(--navy);overflow:hidden;border-top:1px solid rgba(255,107,43,.07);}
+.th{padding:0 7%;margin-bottom:20px;}
+.mou{overflow:hidden;-webkit-mask:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);mask:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);}
+.mtr{display:flex;gap:10px;width:max-content;animation:msc 30s linear infinite;}
+.mtr:hover{animation-play-state:paused;}
+@keyframes msc{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tc{flex:0 0 172px;overflow:hidden;flex-shrink:0;border:1px solid rgba(255,107,43,.08);transition:all .3s;}
+.tc:hover{border-color:rgba(255,107,43,.35);transform:translateY(-4px);}
+.tc img{width:100%;display:block;}
+
+/* BENEFITS */
+#benefits{background:var(--navy2);padding:52px 7%;border-top:1px solid rgba(255,107,43,.07);}
+.bw{display:grid;grid-template-columns:260px 1fr;gap:48px;max-width:980px;}
+.bside .sh{font-size:clamp(1.8rem,3.5vw,2.8rem);}
+.bside p{font-size:.84rem;color:var(--muted2);margin-top:10px;line-height:1.7;}
+.bcards{display:flex;flex-direction:column;gap:1px;background:rgba(255,107,43,.08);}
+.bc{background:var(--navy2);padding:20px 22px;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;transition:background .25s;border-left:2px solid transparent;}
+.bc:hover{background:var(--navy3);border-left-color:var(--orange);}
+.bcn{font-family:var(--head);font-size:2rem;color:rgba(255,107,43,.15);line-height:1;}
+.bct{font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:4px;}
+.bcd{font-size:.8rem;color:var(--muted);line-height:1.65;}
+.bcta{background:var(--orange);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:1px;}
+.bctxt{font-family:var(--head);font-size:1.1rem;color:#fff;letter-spacing:.5px;}
+.btn-n{display:inline-flex;align-items:center;gap:7px;background:#000;color:var(--orange);padding:10px 20px;border:none;font-family:var(--head);font-size:.95rem;letter-spacing:.5px;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.btn-n:hover{background:var(--navy);}
+
+/* NUMBERS */
+#numbers{padding:52px 7%;background:var(--navy3);border-top:1px solid rgba(255,107,43,.07);}
+.ng{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:860px;margin-top:24px;}
+.ntab{border:1px solid rgba(255,107,43,.1);}
+.nr{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(255,107,43,.07);}
+.nr:last-child{border-bottom:none;}
+.nv{font-family:var(--head);font-size:1.9rem;color:var(--orange);line-height:1;letter-spacing:-1px;}
+.nl{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;}
+.ni{font-size:1.2rem;opacity:.6;}
+.eb{background:rgba(255,107,43,.06);border:1px solid rgba(255,107,43,.14);border-top:2px solid var(--orange);padding:20px;}
+.et{font-family:var(--head);font-size:1rem;color:var(--orange);margin-bottom:12px;letter-spacing:.5px;}
+.eg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,107,43,.08);}
+.eb2{background:var(--navy3);padding:16px;text-align:center;}
+.ev{font-family:var(--head);font-size:1.5rem;color:var(--white);line-height:1;letter-spacing:-1px;}
+.el{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;}
+
+/* FAQ */
+#faq{padding:52px 7%;background:var(--navy2);border-top:1px solid rgba(255,107,43,.07);}
+.fw{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:980px;}
+.fi-list{border-top:1px solid rgba(255,107,43,.08);}
+.fi{border-bottom:1px solid rgba(255,107,43,.08);}
+.fq{width:100%;background:none;border:none;text-align:left;padding:14px 0;font-family:var(--body);font-size:.88rem;font-weight:500;color:var(--muted2);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;transition:color .2s;}
+.fq:hover,.fi.open .fq{color:var(--orange);}
+.fic{width:20px;height:20px;border:1px solid rgba(255,107,43,.2);color:var(--orange);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;transition:all .3s;}
+.fi.open .fic{background:var(--orange);border-color:var(--orange);color:#fff;transform:rotate(45deg);}
+.fa{max-height:0;overflow:hidden;transition:max-height .4s,padding .3s;font-size:.82rem;color:var(--muted);line-height:1.75;padding:0;}
+.fi.open .fa{max-height:130px;padding-bottom:13px;}
+
+/* CTA */
+#cta{border-top:1px solid rgba(255,107,43,.07);display:grid;grid-template-columns:1fr 1fr;}
+.ctl{background:linear-gradient(135deg,var(--navy2),var(--navy3));padding:52px 7%;position:relative;overflow:hidden;border-right:1px solid rgba(255,107,43,.07);}
+.ctl::before{content:'';position:absolute;bottom:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,43,.07),transparent);}
+.ch{font-family:var(--head);font-size:clamp(2.2rem,4vw,3.6rem);color:var(--white);line-height:.95;letter-spacing:.5px;margin-bottom:12px;}
+.ch span{color:var(--orange);}
+.cp{font-size:.88rem;color:var(--muted2);margin-bottom:20px;line-height:1.7;}
+.hc{border-left:2px solid var(--orange);padding:12px 16px;background:rgba(255,107,43,.04);margin-bottom:13px;}
+.ht{font-size:.62rem;font-weight:700;color:var(--orange);letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;}
+.hb{font-size:.86rem;color:var(--muted2);line-height:2.0;}
+.hb strong{color:var(--white);}
+.nb{display:flex;align-items:center;gap:8px;border:1px solid rgba(255,107,43,.1);padding:9px 13px;margin-bottom:13px;}
+.nb span{font-size:.84rem;color:var(--white);font-weight:500;}
+.wbtn{display:flex;align-items:center;justify-content:center;gap:9px;background:#25D366;color:#fff;font-family:var(--head);font-size:1.1rem;letter-spacing:1px;padding:15px;border:none;width:100%;margin-bottom:10px;cursor:pointer;transition:all .3s;}
+.wbtn:hover{background:#1fbd5a;transform:translateY(-2px);}
+.wit{border:1px solid rgba(255,107,43,.08);padding:13px 15px;}
+.wh{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+.wr{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--muted2);padding:5px 0;border-bottom:1px solid rgba(255,107,43,.06);}
+.wr:last-child{border-bottom:none;}
+.wd{width:15px;height:15px;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:.5rem;color:#fff;font-weight:900;border-radius:50%;flex-shrink:0;}
+.ctr{background:var(--navy);padding:52px 7%;display:flex;flex-direction:column;justify-content:center;}
+.crt{font-family:var(--head);font-size:1rem;color:var(--orange);margin-bottom:14px;letter-spacing:1px;}
+.ig{display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;font-size:.82rem;font-weight:700;padding:13px 16px;text-decoration:none;transition:all .3s;margin-bottom:10px;}
+.ig:hover{opacity:.88;transform:translateX(4px);}
+.pl{color:var(--muted);font-size:.72rem;text-decoration:none;display:block;margin-top:6px;transition:color .2s;}
+.pl:hover{color:var(--orange);}
+.cc{background:var(--navy2);border:1px solid rgba(255,107,43,.1);border-left:2px solid var(--orange);padding:14px 16px;margin-top:14px;}
+.cct{font-family:var(--head);font-size:.85rem;color:var(--orange);margin-bottom:5px;letter-spacing:.5px;}
+.ccp{font-size:.8rem;color:var(--muted2);line-height:1.65;}
+
+footer{background:var(--navy);border-top:1px solid rgba(255,107,43,.07);padding:20px 7%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.ft{font-size:.78rem;color:rgba(240,246,255,.55);}
+.fs{font-family:var(--head);font-size:.9rem;color:rgba(240,246,255,.7);letter-spacing:.5px;}
+.fp{font-size:.72rem;color:rgba(240,246,255,.35);}
+.fp strong{color:var(--orange);}
+
+.sr{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
+.sr.in{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  .jw,.cw,.bw,.fw,.ng,#cta{grid-template-columns:1fr;}
+  #cta .ctl{border-right:none;border-bottom:1px solid rgba(255,107,43,.07);}
+  .bcta,.bcta{flex-direction:column;text-align:center;}
+  footer{flex-direction:column;text-align:center;}
+}
+@media(max-width:540px){.hero-h{font-size:clamp(2.8rem,14vw,5.5rem);}.hero-stat-strip{flex-wrap:wrap;}}
+</style>
+</head>
+<body>
+
+<div class="ov" id="privacyModal">
+  <div class="pbox">
+    <button class="mcls" onclick="closeM('privacyModal')">×</button>
+    <h3>Information We Collect</h3><p>We collect your name and phone number when you contact us through WhatsApp or our form.</p>
+    <h3>How We Use It</h3><p>Only to communicate about our training programs. Never sold to third parties.</p>
+    <h3>Your Rights</h3><p>You may access, correct, or delete your information at any time.</p>
+  </div>
+</div>
+
+<div class="ov" id="formModal">
+  <div class="fbox">
+    <button class="mcls" onclick="closeM('formModal')">×</button>
+    <div class="ftitle">JOIN NOW</div>
+    <div class="fsub">Mantasha Khan will reach out within 24 hrs</div>
+    <input type="hidden" id="formSource" value=""/>
+    <div class="fg"><label>Full Name *</label><input type="text" id="m-name" placeholder="Your full name"/></div>
+    <div class="fg"><label>Phone *</label><input type="tel" id="m-phone" placeholder="10-digit number" maxlength="10" inputmode="numeric"/></div>
+    <div class="frow">
+      <div class="fg"><label>Age *</label><input type="number" id="m-age" placeholder="Age" min="15" max="60"/></div>
+      <div class="fg"><label>Gender *</label><select id="m-gender"><option value="">Select</option><option>Female</option><option>Male</option><option>Other</option></select></div>
+    </div>
+    <div class="fg"><label>Profession *</label><select id="m-profession"><option value="">Select</option><option>Student</option><option>Housewife</option><option>Working Professional</option><option>Other</option></select></div>
+    <button class="fsend" id="sendBtn" onclick="submitForm()">📲 SEND TO WHATSAPP</button>
+    <div class="fstatus" id="formStatus"></div>
+  </div>
+</div>
+
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge"><span class="bdot"></span> Online Earning Community · Mantasha Khan</div>
+  <h1 class="hero-h">
+    <span class="or" id="heroCount">0+</span><br/>
+    LIVES <span class="sk">CHANGED.</span>
+  </h1>
+  <p class="hero-p">Earn from home — <strong>no experience needed.</strong> Learn real digital skills, build real income. Transform your life with Mantasha Khan.</p>
+  <div class="hero-stat-strip">
+    <div class="hss"><div class="hss-n counter" data-target="2000" data-suffix="+">0+</div><div class="hss-l">Students</div></div>
+    <div class="hss"><div class="hss-n counter" data-target="3" data-suffix="+">0+</div><div class="hss-l">Years</div></div>
+    <div class="hss"><div class="hss-n">₹<span class="counter" data-target="100000" data-suffix="+">0</span></div><div class="hss-l">Monthly</div></div>
+  </div>
+  <button class="h-btn" onclick="openFormModal('Hero CTA')">📲 CONNECT ON WHATSAPP</button>
+</section>
+
+<section id="journey">
+  <div class="jw">
+    <div class="ji sr"><img src="https://i.ibb.co/DDxfWc1H/Whats-App-Image-2026-03-29-at-18-45-16.jpg" alt="Journey" onerror="this.parentElement.innerHTML='<div class=ji-ph>📸 Journey Image</div>'"/></div>
+    <div class="sr" style="transition-delay:.1s">
+      <div class="sec-tag">My Story</div>
+      <h2 class="sh">Zero To<br/><span>Freedom.</span></h2>
+      <p class="sp">No degree, no connections — just the right knowledge and hard work. I transformed my life and now I want you to do the same. <strong style="color:var(--white)">Every woman deserves financial freedom.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="coach">
+  <div class="cw">
+    <div class="sr">
+      <h2 class="cn">Mantasha<br/><em>Khan.</em></h2>
+      <div class="ctags"><div class="ctg">✅ Entrepreneur</div><div class="ctg">💻 Freelancer</div><div class="ctg">🎯 Skills Coach</div></div>
+      <p class="cbio">I started from absolute zero — no fancy degree, no connections. Just the right knowledge. My mission: <strong>Every Woman Deserves Financial Freedom.</strong></p>
+      <div class="qstrip"><p>"REAL SKILLS. REAL INCOME. REAL FREEDOM."</p><cite>— Mantasha Khan</cite></div>
+    </div>
+    <div class="sr" style="transition-delay:.12s">
+      <div class="cstats">
+        <div class="cs"><div class="csn counter" data-target="3" data-suffix="+">0+</div><div class="csl">Years Exp.</div></div>
+        <div class="cs"><div class="csn counter" data-target="2000" data-suffix="+">0+</div><div class="csl">Students</div></div>
+        <div class="cs"><div class="csn counter" data-target="1000" data-suffix="+">0+</div><div class="csl">Entrepreneurs</div></div>
+        <div class="cs"><div class="csn">₹<span class="counter" data-target="100000" data-suffix="+">0</span></div><div class="csl">Monthly</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testi">
+  <div class="th sr">
+    <div class="sec-tag">Real Proof</div>
+    <h2 class="sh">Real Results. <span>Real People.</span></h2>
+  </div>
+  <div class="mou"><div class="mtr" id="row1"></div></div>
+</section>
+
+<section id="benefits">
+  <div class="bw">
+    <div class="bside sr">
+      <div class="sec-tag">What You Get</div>
+      <h2 class="sh">Learn,<br/><span>Earn.</span></h2>
+      <p>Everything in one place — one mentor, one system. No confusion, just results.</p>
+    </div>
+    <div class="sr" style="transition-delay:.1s">
+      <div class="bcards">
+        <div class="bc"><div class="bcn">01</div><div><div class="bct">Personal Mentorship</div><p class="bcd">Direct WhatsApp access to Mantasha Khan. Real guidance whenever you need it.</p></div></div>
+        <div class="bc"><div class="bcn">02</div><div><div class="bct">Proven System</div><p class="bcd">From zero knowledge to consistent income — a complete step-by-step blueprint.</p></div></div>
+        <div class="bc"><div class="bcn">03</div><div><div class="bct">Live Community</div><p class="bcd">Thousands of active earners. Daily wins, support and unstoppable momentum.</p></div></div>
+        <div class="bc"><div class="bcn">04</div><div><div class="bct">Income in 30 Days</div><p class="bcd">Most students see their first income within 30 days of joining.</p></div></div>
+      </div>
+      <div class="bcta">
+        <div class="bctxt">Ready to start today?</div>
+        <button class="btn-n" onclick="openFormModal('Benefits CTA')">📲 JOIN NOW →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="numbers">
+  <div class="sec-tag sr">Track Record</div>
+  <h2 class="sh sr" style="margin-bottom:0;">Numbers That <span>Speak.</span></h2>
+  <div class="ng">
+    <div class="ntab sr">
+      <div class="nr"><div><div class="nv counter" data-target="3" data-suffix="+">0+</div><div class="nl">Years Experience</div></div><div class="ni">⭐</div></div>
+      <div class="nr"><div><div class="nv counter" data-target="1000" data-suffix="+">0+</div><div class="nl">Entrepreneurs Created</div></div><div class="ni">🚀</div></div>
+    </div>
+    <div class="eb sr" style="transition-delay:.1s">
+      <div class="et">⚡ YOUR TURN NOW</div>
+      <div class="eg">
+        <div class="eb2"><div class="ev counter" data-target="1600000" data-prefix="₹" data-format="full">₹0</div><div class="el">Earned by Students</div></div>
+        <div class="eb2"><div class="ev counter" data-target="500" data-suffix="+">0+</div><div class="el">Earning ₹50K+</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="fw">
+    <div class="sr">
+      <div class="sec-tag">FAQ</div>
+      <h2 class="sh">Questions<br/><span>Answered.</span></h2>
+      <p style="font-size:.84rem;color:var(--muted2);margin-top:10px;line-height:1.7;">Every question answered here. Still have doubts? Just WhatsApp us!</p>
+    </div>
+    <div class="fi-list sr" style="transition-delay:.1s">
+      <div class="fi"><button class="fq" onclick="tFaq(this)">What kind of work will I do? <span class="fic">+</span></button><div class="fa">Website Design, Graphics, Video Editing, Content Creation — 100% legal and genuine.</div></div>
+      <div class="fi"><button class="fq" onclick="tFaq(this)">Is this program legitimate? <span class="fic">+</span></button><div class="fa">Yes! 2000+ students earning consistently. Results speak for themselves.</div></div>
+      <div class="fi"><button class="fq" onclick="tFaq(this)">How much time daily? <span class="fic">+</span></button><div class="fa">Just 1-2 hours daily. Works alongside your job, studies, or family.</div></div>
+      <div class="fi"><button class="fq" onclick="tFaq(this)">When will I start earning? <span class="fic">+</span></button><div class="fa">Most students earn within 30 days. Steady income in 1-2 months.</div></div>
+      <div class="fi"><button class="fq" onclick="tFaq(this)">Any prior experience needed? <span class="fic">+</span></button><div class="fa">None at all! Everything taught from scratch, step by step.</div></div>
+      <div class="fi"><button class="fq" onclick="tFaq(this)">What support after joining? <span class="fic">+</span></button><div class="fa">Daily mentorship, 24/7 WhatsApp, weekly calls and active earner community.</div></div>
+      <div class="fi"><button class="fq" onclick="tFaq(this)">Is there any fee? <span class="fic">+</span></button><div class="fa">A small investment covers everything. Zero hidden charges.</div></div>
+      <div class="fi"><button class="fq" onclick="tFaq(this)">Can I do this with my job? <span class="fic">+</span></button><div class="fa">Yes! Built for busy people. Learn in your free time, grow at your own pace.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="ctl sr">
+    <h2 class="ch">One Message.<br/><span>New Life.</span></h2>
+    <p class="cp">Financial freedom doesn't come from waiting. One WhatsApp message can change everything.</p>
+    <div class="hc"><div class="ht">📲 How to Begin</div><div class="hb">WhatsApp par message karein:<br/><strong>📝 Naam · 🎂 Age · 💼 Profession</strong></div></div>
+    <div class="nb"><span>📌 Save My Number: <strong>8299588589</strong></span></div>
+    <button class="wbtn" onclick="openFormModal('CTA Button')">📲 MESSAGE ON WHATSAPP NOW</button>
+    <div class="wit">
+      <div class="wh">Within 24 Hours You'll Receive</div>
+      <div class="wr"><div class="wd">✓</div>Complete program details</div>
+      <div class="wr"><div class="wd">✓</div>Your personal earning roadmap</div>
+    </div>
+  </div>
+  <div class="ctr sr" style="transition-delay:.1s">
+    <div class="crt">STAY CONNECTED</div>
+    <a href="https://www.instagram.com/mantashakhan10x" target="_blank" rel="noopener" class="ig">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Follow on Instagram
+    </a>
+    <a href="#" class="pl" onclick="openM('privacyModal');return false;">🔒 Privacy Policy</a>
+    <div class="cc"><div class="cct">🌟 OUR PROMISE</div><div class="ccp">Real Skills. Real Income. Real Freedom. Thousands of women have transformed their lives — your turn is now.</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">🌟 Empower with skills • 🌈 Support every vision • 🚀 Dreams to direction</div>
+  <div class="fs">❤️ With Love & Strength, Mantasha Khan</div>
+  <div class="fp">Powered by <strong>Osama · AdDestini</strong></div>
+</footer>
+
+<script>
+const SHEET_URL='https://script.google.com/macros/s/AKfycbyP5ViEqCe6OiuGcSQycYEM4VvcXdnnfvEvYsr4pRLeDkU8BLuz_vflTq890LKenjgk/exec';
+const WA_NUMBER='918299588589';
+const imgs=['https://i.ibb.co/FLYkdfwz/1.jpg','https://i.ibb.co/s9np0rXH/2.jpg','https://i.ibb.co/qMB0qW38/3.jpg','https://i.ibb.co/hRXFy5Hx/4.jpg','https://i.ibb.co/VYRrdXKt/5.jpg','https://i.ibb.co/VW9srR0h/6.jpg','https://i.ibb.co/SDq6W1W5/7.jpg'];
+function openM(id){document.getElementById(id).classList.add('on');document.body.style.overflow='hidden';}
+function closeM(id){document.getElementById(id).classList.remove('on');document.body.style.overflow='';}
+function openFormModal(src){clearF();document.getElementById('formSource').value=src||'';openM('formModal');}
+document.querySelectorAll('.ov').forEach(o=>o.addEventListener('click',function(e){if(e.target===this)closeM(this.id);}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeM('formModal');closeM('privacyModal');}});
+function clearF(){['m-name','m-phone','m-age','m-gender','m-profession'].forEach(id=>document.getElementById(id).value='');document.getElementById('formStatus').textContent='';const b=document.getElementById('sendBtn');b.disabled=false;b.textContent='📲 SEND TO WHATSAPP';}
+document.getElementById('m-phone').addEventListener('input',function(){this.value=this.value.replace(/\D/g,'').slice(0,10);});
+async function submitForm(){
+  const name=document.getElementById('m-name').value.trim(),phone=document.getElementById('m-phone').value.trim(),age=document.getElementById('m-age').value.trim(),gender=document.getElementById('m-gender').value,profession=document.getElementById('m-profession').value,source=document.getElementById('formSource').value;
+  if(!name||!phone||!age||!gender||!profession){document.getElementById('formStatus').textContent='⚠️ Please fill all fields.';return;}
+  if(phone.length!==10){document.getElementById('formStatus').textContent='⚠️ Enter valid 10-digit number.';return;}
+  const b=document.getElementById('sendBtn');b.disabled=true;b.textContent='Opening...';
+  saveSheet({name,phone,age,gender,profession,source});
+  if(typeof fbq!=='undefined')fbq('track','Lead');
+  const msg=`Hello Ma'am,\n\nI am interested in joining your program.\n\nName: ${name}\nPhone: ${phone}\nAge: ${age}\nGender: ${gender}\nProfession: ${profession}\n\nPlease next steps batayein. Shukriya!`;
+  setTimeout(()=>{window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`,'_blank');setTimeout(()=>closeM('formModal'),600);},600);
+}
+async function saveSheet(d){
+  if(!SHEET_URL||SHEET_URL.includes('YOUR_'))return;
+  const p='?timestamp='+encodeURIComponent(new Date().toLocaleString('en-IN'))+'&name='+encodeURIComponent(d.name)+'&phone='+encodeURIComponent(d.phone)+'&age='+encodeURIComponent(d.age)+'&gender='+encodeURIComponent(d.gender)+'&profession='+encodeURIComponent(d.profession)+'&source='+encodeURIComponent(d.source);
+  try{await fetch(SHEET_URL+p,{method:'GET',mode:'no-cors'});}catch(e){}
+}
+(function(){const el=document.getElementById('heroCount'),target=100000,dur=2400,s=performance.now(),ease=p=>p===1?1:1-Math.pow(2,-10*p);const tick=now=>{const p=Math.min((now-s)/dur,1);el.textContent=Math.floor(ease(p)*target).toLocaleString('en-IN')+'+';if(p<1)requestAnimationFrame(tick);};requestAnimationFrame(tick);})();
+function animC(el){if(el.dataset.done)return;el.dataset.done='1';const target=parseInt(el.dataset.target),suffix=el.dataset.suffix||'',prefix=el.dataset.prefix||'',fmt=el.dataset.format,dur=target>=100000?2000:1200,s=performance.now(),ease=p=>p===1?1:1-Math.pow(2,-10*p);const tick=now=>{const p=Math.min((now-s)/dur,1),v=Math.floor(ease(p)*target);if(fmt==='full'&&v>=100000)el.textContent=prefix+Math.floor(v/100000)+'L+';else el.textContent=prefix+v.toLocaleString('en-IN')+suffix;if(p<1)requestAnimationFrame(tick);};requestAnimationFrame(tick);}
+const row1=document.getElementById('row1');[...imgs,...imgs].forEach(src=>{const d=document.createElement('div');d.className='tc';d.innerHTML=`<img src="${src}" alt="Student" loading="lazy"/>`;row1.appendChild(d);});
+function tFaq(btn){const item=btn.closest('.fi'),isOpen=item.classList.contains('open');document.querySelectorAll('.fi.open').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.counter').forEach(animC);obs.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>obs.observe(el));
+const cobs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){animC(e.target);cobs.unobserve(e.target);}});},{threshold:.3});
+document.querySelectorAll('.counter').forEach(el=>{if(!el.closest('.sr'))cobs.observe(el);});
+</script>
+</body>
+</html>
